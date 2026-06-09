@@ -178,6 +178,7 @@
 
   /* ---------- SIGNUP FORM ---------- */
   .signup { margin-top: 44px; max-width: 560px; scroll-margin-top: 120px; }
+  .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
   .signup-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .signup label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .signup input[type=email] {
@@ -372,7 +373,11 @@
     <h1 class="hero-title">Web Design &amp; Lead Generation for Small Businesses in the Greater Philadelphia Area.</h1>
     <p class="hero-sub">We're putting the finishing touches on Liberty Web Co. — a small studio building fast, credible websites and automated marketing systems that turn visitors into customers.</p>
 
-    <form class="signup" id="notify" novalidate>
+    <form class="signup" id="notify" name="waitlist" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="waitlist">
+      <p class="hp-field" aria-hidden="true">
+        <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+      </p>
       <div class="signup-row">
         <label class="sr" for="email">Email address</label>
         <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email">
@@ -467,16 +472,29 @@
   const form = document.getElementById('notify');
   const errorEl = document.getElementById('form-error');
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  form.addEventListener('submit', (e) => {
+  const DEFAULT_ERROR = 'Please enter a valid email address.';
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = form.elements.email.value.trim();
     if (!emailRe.test(email)) {
+      errorEl.textContent = DEFAULT_ERROR;
       errorEl.classList.add('show');
       return;
     }
     errorEl.classList.remove('show');
-    // Wire to a real subscription endpoint (Formspree, Mailchimp, ConvertKit, etc.) here.
-    form.classList.add('sent');
+    try {
+      const body = new URLSearchParams(new FormData(form)).toString();
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      form.classList.add('sent');
+    } catch (err) {
+      errorEl.textContent = 'Something went wrong. Please try again in a moment.';
+      errorEl.classList.add('show');
+    }
   });
 </script>
 
