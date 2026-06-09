@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liberty Web Co. — Web & Marketing Systems for Philadelphia Contractors</title>
+<title>Liberty Web Co. — Web Design &amp; Digital Growth · Coming Soon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f2ec;
-    --bg-soft: #eceae2;
-    --ink: #1a1916;
-    --ink-soft: #4a473f;
-    --line: #d8d4c8;
-    --accent: #b04a2f;
-    --accent-soft: #c8634a;
-    --paper: #faf9f5;
+    --bg: #ffffff;
+    --bg-soft: #f2f4fa;
+    --ink: #1d2d54;
+    --ink-deep: #15224a;
+    --ink-soft: #5a6580;
+    --line: #dde1ec;
+    --line-dark: rgba(255,255,255,0.14);
+    --accent: #a02538;
+    --accent-soft: #b8344a;
+    --paper: #ffffff;
+    --dark-text: #eef0f7;
+    --dark-text-soft: #b9c0d4;
     --max: 1180px;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -33,24 +37,29 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* grain texture */
+  /* subtle grain */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.04;
+    opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
   }
 
   h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; }
 
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; width: 100%; }
 
   a { color: inherit; text-decoration: none; }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  img { max-width: 100%; height: auto; }
 
   .eyebrow {
     font-size: 12px;
@@ -72,364 +81,374 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 22px 0;
-    transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s;
-    border-bottom: 1px solid transparent;
+    padding: 20px 0;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
   }
   nav.scrolled {
-    background: rgba(244,242,236,0.82);
+    background: rgba(29,45,84,0.88);
     backdrop-filter: blur(14px);
     padding: 14px 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
   }
   nav .wrap { display: flex; align-items: center; justify-content: space-between; }
-  .brand { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
-  .brand .mark { width: 11px; height: 11px; background: var(--accent); border-radius: 2px; transform: rotate(45deg); }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    transition: color 0.25s;
+  }
+  .brand:hover { color: var(--accent-soft); }
+  @media (max-width: 480px) {
+    .brand { font-size: 18px; }
+    .nav-links .btn { padding: 11px 16px; font-size: 13.5px; }
+  }
   .nav-links { display: flex; gap: 38px; align-items: center; font-size: 14.5px; }
-  .nav-links a { color: var(--ink-soft); transition: color 0.25s; }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-links a.btn { color: var(--paper); }
-  .nav-links a.btn:hover { color: var(--paper); }
+  .nav-links .btn { background: var(--accent); color: #ffffff; }
+  .nav-links .btn:hover { background: var(--accent-soft); }
+
   .btn {
     display: inline-block;
     background: var(--ink);
-    color: var(--paper);
+    color: #ffffff;
     padding: 12px 22px;
     border-radius: 2px;
     font-size: 14.5px;
     font-weight: 500;
     transition: transform 0.3s var(--ease), background 0.3s;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
   }
-  .btn:hover { background: var(--accent); transform: translateY(-2px); }
-  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  .btn-ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
-  @media (max-width: 760px) { .nav-links a:not(.btn) { display: none; } }
+  .btn:hover { background: var(--accent); transform: translateY(-2px); color: #ffffff; }
 
   /* ---------- HERO ---------- */
-  header {
-    padding: 200px 0 110px;
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 170px 0 90px;
     position: relative;
+    overflow: hidden;
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 60px;
-    align-items: end;
+  main::after {
+    content: '';
+    position: absolute;
+    right: -200px; bottom: -200px;
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.10;
+    pointer-events: none;
   }
+  main::before {
+    content: '';
+    position: absolute;
+    left: -180px; top: -100px;
+    width: 460px; height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--ink) 0%, transparent 70%);
+    opacity: 0.07;
+    pointer-events: none;
+  }
+  .hero { max-width: 780px; position: relative; }
   h1.hero-title {
-    font-size: clamp(48px, 7vw, 92px);
-    letter-spacing: -0.035em;
+    font-size: clamp(40px, 5.2vw, 64px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin-top: 24px;
   }
   h1.hero-title em { font-style: italic; color: var(--accent); }
   .hero-sub {
     font-size: 19px;
     color: var(--ink-soft);
-    max-width: 30ch;
-    margin-top: 12px;
+    max-width: 56ch;
+    margin-top: 22px;
   }
-  .hero-cta { display: flex; gap: 14px; margin-top: 38px; flex-wrap: wrap; }
 
   .hero-fade > * { opacity: 0; transform: translateY(24px); animation: rise 1s var(--ease) forwards; }
-  .hero-fade > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-fade > *:nth-child(1) { animation-delay: 0.10s; }
   .hero-fade > *:nth-child(2) { animation-delay: 0.22s; }
   .hero-fade > *:nth-child(3) { animation-delay: 0.34s; }
   .hero-fade > *:nth-child(4) { animation-delay: 0.46s; }
   @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 
-  .hero-stat-card {
+  /* ---------- SIGNUP FORM ---------- */
+  .signup { margin-top: 44px; max-width: 560px; scroll-margin-top: 120px; }
+  .signup-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .signup label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .signup input[type=email] {
+    flex: 1; min-width: 220px;
+    padding: 15px 18px;
     border: 1px solid var(--line);
     background: var(--paper);
-    padding: 28px;
-    border-radius: 3px;
-    opacity: 0;
-    animation: rise 1s var(--ease) 0.58s forwards;
+    border-radius: 2px;
+    font: inherit;
+    color: var(--ink);
+    transition: border-color 0.25s, box-shadow 0.25s;
   }
-  .hero-stat-card .num { font-family: 'Fraunces', serif; font-size: 56px; color: var(--accent); line-height: 1; }
-  .hero-stat-card .lbl { font-size: 14.5px; color: var(--ink-soft); margin-top: 10px; }
-  .hero-stat-card hr { border: none; border-top: 1px solid var(--line); margin: 22px 0; }
-  .hero-stat-card .foot { font-size: 13px; color: var(--ink-soft); }
-
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } header { padding: 150px 0 70px; } }
-
-  /* ---------- MARQUEE / TRUST ---------- */
-  .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 0; }
-  .trust .wrap { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: space-between; }
-  .trust span { font-size: 13.5px; letter-spacing: 0.04em; color: var(--ink-soft); display: flex; align-items: center; gap: 9px; }
-  .trust span::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
-
-  /* ---------- SECTION SHELL ---------- */
-  section { padding: 110px 0; }
-  .sec-head { max-width: 620px; margin-bottom: 64px; }
-  .sec-head h2 { font-size: clamp(32px, 4.4vw, 52px); margin-top: 18px; }
-  .sec-head p { color: var(--ink-soft); margin-top: 18px; font-size: 18px; }
-
-  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-
-  /* ---------- WORK / PORTFOLIO ---------- */
-  .work { background: var(--bg-soft); }
-  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-  .case {
-    background: var(--paper);
-    border: 1px solid var(--line);
+  .signup input[type=email]::placeholder { color: #9aa0b3; }
+  .signup input[type=email]:focus {
+    outline: none;
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(29,45,84,0.14);
+  }
+  .signup .btn { padding: 15px 26px; }
+  .signup .note { font-size: 13.5px; color: var(--ink-soft); margin-top: 14px; max-width: 52ch; }
+  .signup .error {
+    color: var(--accent);
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+  }
+  .signup .error.show { display: block; }
+  .signup.sent .signup-row,
+  .signup.sent .note,
+  .signup.sent .error { display: none; }
+  .signup-thanks {
+    display: none;
+    padding: 22px 26px;
+    border: 1px solid var(--ink);
+    border-left: 3px solid var(--accent);
     border-radius: 3px;
+    background: var(--bg-soft);
+    max-width: 560px;
+  }
+  .signup.sent .signup-thanks { display: block; }
+  .signup-thanks strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .signup-thanks span { color: var(--ink-soft); font-size: 15.5px; }
+
+  /* ---------- WHY ---------- */
+  .why { padding: 100px 0; border-top: 1px solid var(--line); }
+  .why-head { max-width: 640px; margin-bottom: 56px; }
+  .why-head h2 { font-size: clamp(30px, 3.8vw, 44px); margin-top: 16px; }
+  .why-head p { color: var(--ink-soft); margin-top: 16px; font-size: 17.5px; }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
+  .why-item .mark {
+    width: 13px; height: 13px;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: rotate(45deg);
+    margin-bottom: 24px;
+  }
+  .why-item h3 { font-size: 23px; margin-bottom: 12px; }
+  .why-item p { color: var(--ink-soft); font-size: 15.5px; }
+  @media (max-width: 760px) { .why-grid { grid-template-columns: 1fr; gap: 36px; } .why { padding: 70px 0; } }
+
+  /* ---------- PREVIEW (dark navy) ---------- */
+  .preview {
+    background: var(--ink);
+    color: var(--dark-text);
+    padding: 100px 0;
+    position: relative;
     overflow: hidden;
-    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
   }
-  .case:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -28px rgba(26,25,22,0.32); }
-  .case-img { height: 260px; position: relative; overflow: hidden; background: var(--bg-soft); }
-  .case-img .ph { position: absolute; inset: 0; background-size: cover; background-position: center; }
-  .case-img::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(26,25,22,0.0) 40%, rgba(26,25,22,0.28) 100%);
+  .preview::after {
+    content: '';
+    position: absolute;
+    right: -150px; top: -150px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.22;
     pointer-events: none;
   }
-  .case:hover .ph { transform: scale(1.05); }
-  .ph { transition: transform 0.8s var(--ease); }
-  .case-tag {
-    position: absolute; top: 16px; left: 16px;
-    background: rgba(250,249,245,0.92);
-    backdrop-filter: blur(4px);
-    font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 6px 12px; border-radius: 2px; font-weight: 600; color: var(--ink);
+  .preview .wrap { position: relative; }
+  .preview .eyebrow { color: var(--accent-soft); }
+  .preview .eyebrow::before { background: var(--accent-soft); }
+  .preview-head { max-width: 620px; margin-bottom: 52px; }
+  .preview-head h2 { font-size: clamp(30px, 3.8vw, 44px); margin-top: 16px; color: #ffffff; }
+  .preview-head p { color: var(--dark-text-soft); margin-top: 16px; font-size: 17.5px; }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line-dark);
+    border: 1px solid var(--line-dark);
+    border-radius: 3px;
+    overflow: hidden;
   }
-  .case-body { padding: 28px; }
-  .case-body h3 { font-size: 24px; }
-  .case-body .loc { font-size: 13px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; margin-top: 6px; }
-  .case-body p { color: var(--ink-soft); margin-top: 14px; font-size: 15.5px; }
-  .case-metrics { display: flex; gap: 30px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
-  .case-metrics div .m { font-family: 'Fraunces', serif; font-size: 30px; color: var(--ink); line-height: 1; }
-  .case-metrics div .c { font-size: 12.5px; color: var(--ink-soft); margin-top: 5px; }
-
-  @media (max-width: 760px) { .work-grid { grid-template-columns: 1fr; } }
-
-  /* ---------- APPROACH ---------- */
-  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
-  .step { background: var(--bg); padding: 44px 34px; transition: background 0.4s; }
-  .step:hover { background: var(--paper); }
-  .step .idx { font-family: 'Fraunces', serif; font-size: 15px; color: var(--accent); font-weight: 600; }
-  .step h3 { font-size: 25px; margin: 16px 0 12px; }
-  .step p { color: var(--ink-soft); font-size: 15.5px; }
-  @media (max-width: 760px) { .approach-grid { grid-template-columns: 1fr; } }
-
-  /* ---------- AUDIT CTA BAND ---------- */
-  .band { background: var(--ink); color: var(--paper); border-radius: 4px; padding: 70px 60px; position: relative; overflow: hidden; }
-  .band::after {
-    content: ''; position: absolute; right: -120px; top: -120px;
-    width: 380px; height: 380px; border-radius: 50%;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity: 0.4;
+  .card {
+    background: var(--ink);
+    padding: 40px 32px;
+    transition: background 0.4s;
   }
-  .band .eyebrow { color: var(--accent-soft); }
-  .band .eyebrow::before { background: var(--accent-soft); }
-  .band h2 { font-size: clamp(30px, 4vw, 46px); color: var(--paper); margin: 18px 0; max-width: 18ch; position: relative; }
-  .band p { color: #cbc7bd; max-width: 46ch; font-size: 17px; position: relative; }
-  .band .btn { margin-top: 32px; background: var(--accent); position: relative; }
-  .band .btn:hover { background: var(--accent-soft); }
-  .audit-list { display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap; position: relative; }
-  .audit-list div { font-size: 14.5px; color: #e4e1d8; display: flex; align-items: center; gap: 9px; }
-  .audit-list div::before { content: '✓'; color: var(--accent-soft); font-weight: 700; }
-  @media (max-width: 640px) { .band { padding: 50px 32px; } }
+  .card:hover { background: var(--ink-deep); }
+  .card .idx {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--accent-soft);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+  .card h3 { font-size: 23px; margin: 14px 0 12px; color: #ffffff; }
+  .card p { color: var(--dark-text-soft); font-size: 15.5px; }
+  @media (max-width: 760px) { .preview-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- TESTIMONIAL ---------- */
-  .quote-block { max-width: 820px; margin: 0 auto; text-align: center; }
-  .quote-block blockquote { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.25; letter-spacing: -0.02em; }
-  .quote-block blockquote span { color: var(--accent); }
-  .quote-attr { margin-top: 32px; font-size: 15px; color: var(--ink-soft); }
-  .quote-attr strong { color: var(--ink); font-weight: 600; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
 
   /* ---------- FOOTER ---------- */
-  footer { background: var(--bg-soft); border-top: 1px solid var(--line); padding: 80px 0 40px; }
-  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-  .foot-grid h4 { font-family: 'Fraunces', serif; font-size: 28px; max-width: 14ch; }
-  .foot-grid .col h5 { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 16px; }
-  .foot-grid .col a { display: block; color: var(--ink); margin-bottom: 11px; font-size: 15px; transition: color 0.25s; }
-  .foot-grid .col a:hover { color: var(--accent); }
-  .foot-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-soft); flex-wrap: wrap; gap: 12px; }
-  .reg { font-variant-numeric: tabular-nums; }
-  @media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; gap: 30px; } }
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    padding: 56px 0 40px;
+    text-align: center;
+  }
+  .foot-logo {
+    display: block;
+    height: clamp(170px, 22vw, 260px);
+    width: auto;
+    margin: 0 auto 28px;
+  }
+  .foot-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+    gap: 8px 22px;
+  }
+  .foot-bar .sep { color: var(--line); }
+  @media (max-width: 480px) { .foot-bar .sep { display: none; } }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    main { padding: 130px 0 60px; }
+    h1.hero-title { font-size: 38px; margin-top: 18px; letter-spacing: -0.03em; }
+    .hero-sub { font-size: 16.5px; margin-top: 18px; }
+    .eyebrow { font-size: 11.5px; letter-spacing: 0.16em; }
+    .signup { margin-top: 32px; }
+    .signup-row { flex-direction: column; align-items: stretch; gap: 12px; }
+    .signup input[type=email] { min-width: 0; width: 100%; padding: 14px 16px; }
+    .signup .btn { width: 100%; padding: 14px 22px; }
+    .signup-thanks { padding: 20px 22px; }
+    .why { padding: 64px 0; }
+    .why-head { margin-bottom: 36px; }
+    .why-head p { font-size: 16.5px; }
+    .why-grid { gap: 30px; }
+    .why-item h3 { font-size: 21px; }
+    .preview { padding: 64px 0; }
+    .preview-head { margin-bottom: 36px; }
+    .preview-head p { font-size: 16.5px; }
+    .card { padding: 34px 28px; }
+    .card h3 { font-size: 21px; }
+    footer { padding: 44px 0 36px; }
+  }
+  @media (max-width: 380px) {
+    h1.hero-title { font-size: 34px; }
+    nav { padding: 16px 0; }
+    .brand { font-size: 17px; }
+    .nav-links .btn { padding: 10px 14px; font-size: 13px; }
+  }
 </style>
 </head>
 <body>
 
 <nav id="nav">
   <div class="wrap">
-    <div class="brand"><span class="mark"></span>Liberty Web Co.</div>
+    <a href="#" class="brand">Liberty Web Co.</a>
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#approach">Approach</a>
-      <a href="#audit">Free Audit</a>
-      <a href="#contact" class="btn">Book a Call</a>
+      <a href="#notify" class="btn">Join the Waitlist</a>
     </div>
   </div>
 </nav>
 
-<header>
-  <div class="wrap hero-grid">
-    <div class="hero-fade">
-      <span class="eyebrow">Web &amp; Marketing for Greater Philadelphia Contractors</span>
-      <h1 class="hero-title">More booked jobs. Less time <em>chasing leads.</em></h1>
-      <p class="hero-sub">We build fast, credible websites and automated lead systems for home improvement pros — so the right homeowners find you, and none of them slip through the cracks.</p>
-      <div class="hero-cta">
-        <a href="#audit" class="btn">Get a free site &amp; lead audit</a>
-        <a href="#work" class="btn btn-ghost">See the work</a>
-      </div>
-    </div>
-    <div class="hero-stat-card">
-      <div class="num">20–40%</div>
-      <div class="lbl">of contractor leads are lost to slow or missed follow-up.</div>
-      <hr>
-      <div class="foot">We close that gap with instant-response systems that text the homeowner and alert you within minutes.</div>
-    </div>
-  </div>
-</header>
+<main>
+  <div class="wrap hero hero-fade">
+    <span class="eyebrow">Get early access to a free website &amp; marketing audit</span>
+    <h1 class="hero-title">Web Design &amp; Lead Generation for Small Businesses in the Greater Philadelphia Area.</h1>
+    <p class="hero-sub">We're putting the finishing touches on Liberty Web Co. — a small studio building fast, credible websites and automated marketing systems that turn visitors into customers.</p>
 
-<div class="trust">
-  <div class="wrap">
-    <span>Built for roofers, remodelers &amp; trades</span>
-    <span>HICPA-compliant by design</span>
-    <span>Mobile-first, fast-loading</span>
-    <span>You own your data &amp; ad accounts</span>
+    <form class="signup" id="notify" novalidate>
+      <div class="signup-row">
+        <label class="sr" for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email">
+        <button type="submit" class="btn">Join the Waitlist</button>
+      </div>
+      <div class="note">Join the waitlist for launch updates and a free website &amp; marketing audit.</div>
+      <div class="error" id="form-error" role="alert">Please enter a valid email address.</div>
+      <div class="signup-thanks">
+        <strong>You're on the list.</strong>
+        <span>We'll send a short note the moment we're live — usually with a small launch perk for early subscribers.</span>
+      </div>
+    </form>
   </div>
-</div>
+</main>
 
-<section id="work" class="work">
+<section class="why">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Selected Work</span>
-      <h2>Proof, not promises.</h2>
-      <p>Every project is built as a case study — real towns, real before-and-after results, and the numbers that matter to your bottom line.</p>
+    <div class="why-head reveal">
+      <span class="eyebrow">Why Liberty Web Co.</span>
+      <h2>Built for how local businesses actually grow.</h2>
+      <p>Three things we believe every small business website should do — and what we'll build into every project from day one.</p>
     </div>
-    <div class="work-grid">
-      <div class="case reveal">
-        <div class="case-img"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80')"></div><span class="case-tag">Roofing &amp; Siding</span></div>
-        <div class="case-body">
-          <h3>Hartwell Exteriors</h3>
-          <div class="loc">Bucks County, PA</div>
-          <p>Rebuilt a 2015 DIY site into a mobile-first portfolio with instant lead routing. Calls now hit the owner's phone before he leaves the driveway.</p>
-          <div class="case-metrics">
-            <div><div class="m">3.2×</div><div class="c">More form fills</div></div>
-            <div><div class="m">4 min</div><div class="c">Avg. response time</div></div>
-          </div>
-        </div>
+    <div class="why-grid reveal">
+      <div class="why-item">
+        <div class="mark"></div>
+        <h3>Local &amp; Responsive</h3>
+        <p>Based in Greater Philadelphia, we know the local market and we answer the phone. You'll work directly with the people building your site — no offshore handoffs, no slow ticketing system.</p>
       </div>
-      <div class="case reveal">
-        <div class="case-img"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80')"></div><span class="case-tag">Kitchen Remodel</span></div>
-        <div class="case-body">
-          <h3>Main Line Kitchen Co.</h3>
-          <div class="loc">Ardmore, PA</div>
-          <p>A design-forward gallery site with financing built into every estimate page, turning sticker shock into manageable monthly payments.</p>
-          <div class="case-metrics">
-            <div><div class="m">+41%</div><div class="c">Consult bookings</div></div>
-            <div><div class="m">$0</div><div class="c">Dealer fees</div></div>
-          </div>
-        </div>
+      <div class="why-item">
+        <div class="mark"></div>
+        <h3>Modern Sites that Generate Leads</h3>
+        <p>Fast, mobile-first websites designed to convert visitors into inquiries — built around the proof, trust signals, and clear calls to action that turn browsers into customers.</p>
       </div>
-      <div class="case reveal">
-        <div class="case-img"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80')"></div><span class="case-tag">Bath &amp; Basement</span></div>
-        <div class="case-body">
-          <h3>Keystone Basements</h3>
-          <div class="loc">Montgomery County, PA</div>
-          <p>Hyper-local SEO targeting Blue Bell and King of Prussia, paired with a winter pipeline campaign that filled the spring schedule early.</p>
-          <div class="case-metrics">
-            <div><div class="m">#1</div><div class="c">Local map pack</div></div>
-            <div><div class="m">5 mo.</div><div class="c">Booked ahead</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="case reveal">
-        <div class="case-img"><div class="ph" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80')"></div><span class="case-tag">Windows &amp; Doors</span></div>
-        <div class="case-body">
-          <h3>Delaware Valley Glass</h3>
-          <div class="loc">Chester County, PA</div>
-          <p>A full HICPA compliance pass on the site and contracts, plus energy-savings content that drove fall demand for window upgrades.</p>
-          <div class="case-metrics">
-            <div><div class="m">100%</div><div class="c">HICPA compliant</div></div>
-            <div><div class="m">2.6×</div><div class="c">Organic traffic</div></div>
-          </div>
-        </div>
+      <div class="why-item">
+        <div class="mark"></div>
+        <h3>Automation that Saves Time</h3>
+        <p>Instant text replies to new inquiries, push alerts to your phone, and follow-ups that nudge themselves — so qualified leads don't go cold while you're focused on running the business.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="approach">
+<section class="preview">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">How We Work</span>
+    <div class="preview-head reveal">
+      <span class="eyebrow">What We're Building</span>
       <h2>A system, not a brochure.</h2>
-      <p>We start where the money leaks — then build the website and automation around capturing every qualified lead.</p>
+      <p>A preview of what we'll be offering at launch — built around the idea that a website should earn trust quickly and turn that trust into measurable growth.</p>
     </div>
-    <div class="approach-grid reveal">
-      <div class="step">
-        <div class="idx">01 — Audit</div>
-        <h3>Find the leaks</h3>
-        <p>We review your site, contracts, and lead response speed for HICPA gaps, voidable clauses, and the leads quietly slipping away.</p>
+    <div class="preview-grid reveal">
+      <div class="card">
+        <div class="idx">01 — Sites</div>
+        <h3>Credibility-first websites</h3>
+        <p>Fast, mobile-first sites designed to build trust at first glance and convert visitors into qualified inquiries.</p>
       </div>
-      <div class="step">
-        <div class="idx">02 — Build</div>
-        <h3>Build the credibility engine</h3>
-        <p>A fast, mobile-first site with before/after galleries, local proof, and your registration and certifications front and center.</p>
+      <div class="card">
+        <div class="idx">02 — Automation</div>
+        <h3>Instant-response systems</h3>
+        <p>Inbound inquiries get answered in minutes — auto-replies to the prospect, push alerts to you — so leads stop going cold.</p>
       </div>
-      <div class="step">
-        <div class="idx">03 — Automate</div>
-        <h3>Never miss a lead</h3>
-        <p>Instant SMS to the homeowner, a push alert to your phone, and financing built into every estimate — so jobs close themselves.</p>
+      <div class="card">
+        <div class="idx">03 — Audits</div>
+        <h3>Free pre-launch audits</h3>
+        <p>Subscribers get first access to a free site &amp; marketing audit when we open — yours to keep either way, no pressure.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="audit">
-  <div class="wrap">
-    <div class="band reveal">
-      <span class="eyebrow">Free, No Pressure</span>
-      <h2>The Compliance &amp; Lead-Leakage Audit</h2>
-      <p>In 20 minutes, we'll show you exactly where leads are slipping through and whether your website and contracts could be legally exposed under Pennsylvania's HICPA. You keep the report either way.</p>
-      <div class="audit-list">
-        <div>HICPA registration &amp; disclosure check</div>
-        <div>Lead response-time analysis</div>
-        <div>Mobile speed &amp; conversion review</div>
-      </div>
-      <a href="#contact" class="btn">Claim your free audit</a>
     </div>
   </div>
 </section>
 
-<section class="work">
+<footer>
   <div class="wrap">
-    <div class="quote-block reveal">
-      <span class="eyebrow" style="justify-content:center;">Why Contractors Stay</span>
-      <blockquote style="margin-top:24px;">"They don't talk in tech jargon. They talk in <span>booked jobs.</span> My phone rings, the homeowner's already gotten a text, and I look like the most professional outfit in the county."</blockquote>
-      <div class="quote-attr"><strong>Owner</strong> — Roofing &amp; Siding, 8 crews · Bucks County</div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <h4>Let's see where your leads are going.</h4>
-        <a href="#" class="btn" style="margin-top:24px;">Book a 20-minute call</a>
-      </div>
-      <div class="col">
-        <h5>Company</h5>
-        <a href="#work">Work</a>
-        <a href="#approach">Approach</a>
-        <a href="#audit">Free Audit</a>
-      </div>
-      <div class="col">
-        <h5>Contact</h5>
-        <a href="#">hello@libertyweb.co</a>
-        <a href="#">(215) 555-0142</a>
-        <a href="#">Greater Philadelphia, PA</a>
-      </div>
-    </div>
+    <img src="Images/logo.png" alt="Liberty Web Co. — Web Design & Digital Growth" class="foot-logo">
     <div class="foot-bar">
-      <div>© 2026 Liberty Web Co. All rights reserved.</div>
-      <div class="reg">PA Reg. #PA000000 — shown on every client site.</div>
+      <div>© 2026 Liberty Web Co.</div>
+      <span class="sep" aria-hidden="true">·</span>
+      <div>Serving the Greater Philadelphia area</div>
     </div>
   </div>
 </footer>
@@ -439,10 +458,26 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('notify');
+  const errorEl = document.getElementById('form-error');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = form.elements.email.value.trim();
+    if (!emailRe.test(email)) {
+      errorEl.classList.add('show');
+      return;
+    }
+    errorEl.classList.remove('show');
+    // Wire to a real subscription endpoint (Formspree, Mailchimp, ConvertKit, etc.) here.
+    form.classList.add('sent');
+  });
 </script>
 
 </body>
