@@ -2,8 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Penn Square Digital — Web Design &amp; Lead Generation · Coming Soon</title>
+<meta name="description" content="Penn Square Digital is a Philadelphia studio building fast, conversion-focused websites and marketing automation for small businesses. Join the waitlist for launch updates and a free pre-launch audit.">
+<meta name="theme-color" content="#1d2d54">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Penn Square Digital">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Penn Square Digital">
+<meta property="og:title" content="Penn Square Digital — Web Design &amp; Lead Generation for Philadelphia Small Businesses">
+<meta property="og:description" content="A Philadelphia studio building fast, credible websites and automated marketing systems for local small businesses. Launching soon — join the waitlist for early access.">
+<meta property="og:image" content="https://pennsquaredigital.com/Images/psd-favicon.png">
+<meta property="og:url" content="https://pennsquaredigital.com">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Penn Square Digital — Coming Soon">
+<meta name="twitter:description" content="Philadelphia web design, lead generation, and marketing automation for small businesses. Join the waitlist for early access.">
+<meta name="twitter:image" content="https://pennsquaredigital.com/Images/psd-favicon.png">
+
+<link rel="canonical" href="https://pennsquaredigital.com">
+
+<!-- Structured data for local SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Penn Square Digital",
+  "alternateName": "PSD",
+  "description": "Web design, lead generation, and marketing automation for Philadelphia small businesses.",
+  "url": "https://pennsquaredigital.com",
+  "logo": "https://pennsquaredigital.com/Images/psd-logo.png",
+  "image": "https://pennsquaredigital.com/Images/psd-favicon.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Philadelphia",
+    "addressRegion": "PA",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Philadelphia" },
+    { "@type": "AdministrativeArea", "name": "Greater Philadelphia Area" }
+  ],
+  "serviceType": [
+    "Web Design",
+    "Lead Generation",
+    "Marketing Automation",
+    "Website Speed Optimization",
+    "Review Generation"
+  ],
+  "knowsAbout": [
+    "Small business websites",
+    "Mobile-first design",
+    "SMS auto-replies",
+    "Local SEO"
+  ]
+}
+</script>
+
 <link rel="icon" type="image/png" href="Images/psd-favicon.png">
 <link rel="apple-touch-icon" href="Images/psd-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -295,6 +354,8 @@
 
   /* ---------- SIGNUP FORM ---------- */
   .signup { margin-top: 34px; max-width: 560px; scroll-margin-top: 120px; }
+  .signup .btn { background: var(--accent); color: #ffffff; }
+  .signup .btn:hover { background: var(--accent-soft); }
   .hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
   .signup-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .signup label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -363,6 +424,28 @@
   .why-item p { color: var(--ink-soft); font-size: 15.5px; }
   @media (max-width: 760px) { .why-grid { grid-template-columns: 1fr; gap: 36px; } .why { padding: 70px 0; } }
 
+  /* ---------- STUDIO BAND ---------- */
+  .studio-band { padding: 76px 0 84px; background: var(--bg); border-top: 1px solid var(--line); text-align: center; }
+  .studio-content { max-width: 660px; margin: 0 auto; }
+  .studio-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  .studio-eyebrow::before, .studio-eyebrow::after {
+    content: ''; width: 24px; height: 1px; background: var(--accent);
+  }
+  .studio-content h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(24px, 2.8vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 18px 0 18px;
+  }
+  .studio-content p { color: var(--ink-soft); font-size: 17px; line-height: 1.65; max-width: 580px; margin: 0 auto; }
+
   /* ---------- PREVIEW (dark navy) ---------- */
   .preview {
     background: var(--ink);
@@ -403,15 +486,46 @@
     transition: background 0.4s;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+  }
+  .card-visual {
+    min-height: 96px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .viz-stat { display: flex; align-items: baseline; gap: 10px; }
+  .viz-stat .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 46px;
+    font-weight: 500;
+    color: var(--accent-soft);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+  .viz-stat .stat-unit { font-size: 26px; color: var(--accent-soft); opacity: 0.75; }
+  .viz-stat .stat-label {
+    font-size: 11px;
+    color: var(--dark-text-soft);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+  }
+  .viz-stars { display: flex; gap: 5px; align-items: center; font-size: 22px; color: var(--accent-soft); line-height: 1; }
+  .viz-stars .star-meta {
+    margin-left: 10px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 12px;
+    color: var(--dark-text-soft);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
   .auto-notification {
-    margin-bottom: auto;
+    width: 100%;
     background: rgba(255,255,255,0.96);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     border-radius: 13px;
-    padding: 12px 14px 14px;
+    padding: 11px 14px 13px;
     color: var(--ink);
     transform: rotate(-1.5deg);
     box-shadow:
@@ -465,6 +579,47 @@
 
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
   .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta { padding: 84px 0 90px; background: var(--bg); }
+  .cta-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: var(--dark-text);
+    border-radius: 16px;
+    padding: 64px 56px;
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .cta-card::after {
+    content: '';
+    position: absolute;
+    right: -120px; top: -120px;
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.32;
+    pointer-events: none;
+  }
+  .cta-card .eyebrow { color: var(--accent-soft); position: relative; z-index: 1; }
+  .cta-card .eyebrow::before { background: var(--accent-soft); }
+  .cta-card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: clamp(28px, 3.6vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 18px auto 14px;
+    max-width: 22ch;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-card .cta-sub { color: var(--dark-text-soft); font-size: 17px; margin-bottom: 32px; position: relative; z-index: 1; }
+  .cta-btn { background: var(--accent); position: relative; z-index: 1; padding: 15px 28px; }
+  .cta-btn:hover { background: var(--accent-soft); }
 
   /* ---------- FOOTER ---------- */
   footer {
@@ -533,6 +688,21 @@
     .preview-head p { font-size: 16.5px; }
     .card { padding: 34px 28px; }
     .card h3 { font-size: 21px; }
+    .card-visual { min-height: 78px; margin-bottom: 18px; }
+    .viz-stat .stat-num { font-size: 38px; }
+    .viz-stat .stat-unit { font-size: 22px; }
+    .viz-stars { font-size: 20px; gap: 4px; }
+    .viz-stars .star-meta { font-size: 11px; margin-left: 8px; }
+    .auto-notification { padding: 10px 13px 12px; }
+    .notif-title { font-size: 13.5px; }
+    .notif-body { font-size: 12px; }
+    .studio-band { padding: 54px 0 60px; }
+    .studio-content h2 { font-size: 24px; margin: 14px 0 14px; }
+    .studio-content p { font-size: 16px; }
+    .final-cta { padding: 60px 0 70px; }
+    .cta-card { padding: 48px 26px; }
+    .cta-card h2 { font-size: 26px; }
+    .cta-card .cta-sub { font-size: 16px; margin-bottom: 24px; }
     footer { padding: 44px 0 36px; }
   }
   @media (max-width: 380px) {
@@ -616,25 +786,35 @@
   <div class="wrap">
     <div class="why-head reveal">
       <span class="eyebrow">Why Penn Square Digital</span>
-      <h2>Built for how local businesses actually grow.</h2>
-      <p>Three things we believe every small business website should do — and what we'll build into every project from day one.</p>
+      <h2>How we work, and why it matters.</h2>
+      <p>Three operating principles that shape every Penn Square Digital project — the philosophy behind the platforms we build.</p>
     </div>
     <div class="why-grid reveal">
       <div class="why-item">
         <div class="mark"></div>
         <h3>Local &amp; Responsive</h3>
-        <p>Based in Greater Philadelphia, we know the local market and we answer the phone. You'll work directly with the people building your site — no offshore handoffs, no slow ticketing system.</p>
+        <p>Based in Greater Philadelphia, we know the local market and we answer the phone. Quick text-back, fast turnaround, real conversations — not ticket numbers in an offshore queue.</p>
       </div>
       <div class="why-item">
         <div class="mark"></div>
-        <h3>Modern Sites that Generate Leads</h3>
-        <p>Fast, mobile-first websites designed to convert visitors into inquiries — built around the proof, trust signals, and clear calls to action that turn browsers into customers.</p>
+        <h3>Direct &amp; Transparent</h3>
+        <p>Skip the agency layer. You work with the developer building your site, not an account manager translating your needs. Quick decisions, clear scope, honest pricing — no surprises on the invoice.</p>
       </div>
       <div class="why-item">
         <div class="mark"></div>
-        <h3>Automation that Saves Time</h3>
-        <p>Instant text replies to new inquiries, push alerts to your phone, and follow-ups that nudge themselves — so qualified leads don't go cold while you're focused on running the business.</p>
+        <h3>Built to Last</h3>
+        <p>Clean code on platforms you own. No vendor lock-in, no monthly ransom for basic edits, no being held hostage to a tech stack you didn't choose — your site stays yours.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="studio-band">
+  <div class="wrap">
+    <div class="studio-content reveal">
+      <span class="studio-eyebrow">The Studio</span>
+      <h2>Built in Philadelphia. Focused on small business.</h2>
+      <p>Penn Square Digital is a small, independent studio with deep roots in web performance, automation, and lead generation for local service businesses. Small enough to know every client's name. Technical enough to ship the systems agencies usually charge five figures for.</p>
     </div>
   </div>
 </section>
@@ -643,41 +823,66 @@
   <div class="wrap">
     <div class="preview-head reveal">
       <span class="eyebrow">What We're Building</span>
-      <h2>A system, not a brochure.</h2>
-      <p>A preview of what we'll be offering at launch — built around the idea that a website should earn trust quickly and turn that trust into measurable growth.</p>
+      <h2>Concrete deliverables, not buzzwords.</h2>
+      <p>A preview of the specific systems we'll engineer into every project — built to win the search ranking, capture the lead, and earn the next review.</p>
     </div>
     <div class="preview-grid reveal">
       <div class="card">
-        <div class="idx">01 — Sites</div>
-        <h3>Credibility-first websites</h3>
-        <p>Fast, mobile-first sites designed to build trust at first glance and convert visitors into qualified inquiries.</p>
-      </div>
-      <div class="card card-automation">
-        <div class="auto-notification" aria-hidden="true">
-          <div class="notif-head">
-            <div class="notif-icon"></div>
-            <span class="notif-app">Messages</span>
-            <span class="notif-time">now</span>
+        <div class="card-visual" aria-hidden="true">
+          <div class="viz-stat">
+            <span class="stat-num">1.8<span class="stat-unit">s</span></span>
+            <span class="stat-label">target<br>load&nbsp;time</span>
           </div>
-          <div class="notif-title">New lead from John D.</div>
-          <div class="notif-body">Auto-reply sent — alert delivered to your phone</div>
         </div>
-        <div class="idx">02 — Automation</div>
-        <h3>Instant-response systems</h3>
-        <p>Inbound inquiries get answered in minutes — auto-replies to the prospect, push alerts to you — so leads stop going cold.</p>
+        <div class="idx">01 — Performance</div>
+        <h3>Custom Speed Optimization</h3>
+        <p>Every page tuned for sub-2-second mobile load times. Image compression, lazy-loading, critical CSS, and modern caching — built in from day one, not bolted on after launch.</p>
       </div>
       <div class="card">
-        <div class="idx">03 — Audits</div>
-        <h3>Free pre-launch audits</h3>
-        <p>Subscribers get first access to a free site &amp; marketing audit when we open — yours to keep either way, no pressure.</p>
+        <div class="card-visual" aria-hidden="true">
+          <div class="auto-notification">
+            <div class="notif-head">
+              <div class="notif-icon"></div>
+              <span class="notif-app">Messages</span>
+              <span class="notif-time">now</span>
+            </div>
+            <div class="notif-title">New lead from John D.</div>
+            <div class="notif-body">Instant text auto-reply sent — alert pushed to your phone</div>
+          </div>
+        </div>
+        <div class="idx">02 — Conversion</div>
+        <h3>Instant SMS Auto-Replies</h3>
+        <p>The moment a lead submits your form, they get a personalized text confirmation and you get a push alert. Target response time: under ninety seconds, every time.</p>
       </div>
+      <div class="card">
+        <div class="card-visual" aria-hidden="true">
+          <div class="viz-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <span class="star-meta">5.0 avg</span>
+          </div>
+        </div>
+        <div class="idx">03 — Reputation</div>
+        <h3>Review Generation Systems</h3>
+        <p>Automated review request workflows that nudge happy customers to Google and Facebook at exactly the right moment — turning your reputation into a moat competitors can't easily cross.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <span class="eyebrow">Last Call</span>
+      <h2>Ready to transform your digital footprint?</h2>
+      <p class="cta-sub">Secure your free pre-launch audit today.</p>
+      <a href="#notify" class="btn cta-btn">Join the Waitlist</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <img src="Images/psd-logo.png" alt="Penn Square Digital" class="foot-logo">
+    <img src="Images/psd-logo.png" alt="Penn Square Digital" class="foot-logo" loading="lazy" width="600" height="250">
     <div class="foot-grid">
       <div>
         <div class="foot-brand">Penn Square Digital</div>
