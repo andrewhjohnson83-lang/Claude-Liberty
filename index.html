@@ -317,17 +317,36 @@
     max-width: 100%;
     margin: 0 auto 28px;
   }
-  .foot-bar {
-    display: flex;
+  .foot-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 12px 88px;
     justify-content: center;
-    align-items: center;
+    text-align: left;
+    margin: 0 auto 36px;
+  }
+  .foot-brand {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .foot-meta {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .foot-bar {
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
     font-size: 13.5px;
     color: var(--ink-soft);
-    flex-wrap: wrap;
-    gap: 8px 22px;
   }
-  .foot-bar .sep { color: var(--line); }
-  @media (max-width: 480px) { .foot-bar .sep { display: none; } }
+  @media (max-width: 480px) {
+    .foot-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+  }
 
   @media (max-width: 640px) {
     .wrap { padding: 0 20px; }
@@ -454,11 +473,18 @@
 <footer>
   <div class="wrap">
     <img src="Images/psd-logo.png" alt="Penn Square Digital" class="foot-logo">
-    <div class="foot-bar">
-      <div>© 2026 Penn Square Digital</div>
-      <span class="sep" aria-hidden="true">·</span>
-      <div>Serving the Greater Philadelphia area</div>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Penn Square Digital</div>
+        <div class="foot-meta">Philadelphia, PA</div>
+      </div>
+      <div>
+        <div class="foot-meta">Web Design</div>
+        <div class="foot-meta">Lead Generation</div>
+        <div class="foot-meta">Automation</div>
+      </div>
     </div>
+    <div class="foot-bar">© 2026 Penn Square Digital</div>
   </div>
 </footer>
 
