@@ -47,6 +47,16 @@
         <a href="#audit">The audit</a>
         <a href="#contact" class="nav-cta">Talk to us</a>
       </nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <ul class="mobile-menu-list">
+        <li><a href="../">Home</a></li>
+        <li><a href="#audit">Free Audit</a></li>
+        <li><a href="#contact">Talk to Us</a></li>
+      </ul>
     </div>
   </header>
 
@@ -879,5 +889,23 @@
   <div class="confetti-root" id="confettiRoot" aria-hidden="true"></div>
 
   <script src="script.js"></script>
+  <script>
+    // Mobile hamburger menu
+    (function() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      function setMenuOpen(open) {
+        if (!mobileMenu || !navToggle) return;
+        mobileMenu.classList.toggle('open', open);
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+        mobileMenu.setAttribute('aria-hidden', String(!open));
+        document.body.classList.toggle('menu-locked', open);
+      }
+      navToggle?.addEventListener('click', () => setMenuOpen(!mobileMenu.classList.contains('open')));
+      mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenuOpen(false)));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenuOpen(false); });
+    })();
+  </script>
 </body>
 </html>
