@@ -278,17 +278,17 @@
   .hero-card {
     display: flex;
     flex-direction: column;
-    padding: 30px 32px 32px;
-    background: #ffffff;
-    border: 1px solid var(--line);
-    border-radius: 10px;
+    padding: 36px 32px 38px;
+    background: #16284A;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
     box-shadow:
-      0 1px 2px rgba(15, 25, 51, 0.04),
-      0 10px 24px -12px rgba(15, 25, 51, 0.10);
+      0 1px 2px rgba(0, 0, 0, 0.18),
+      0 18px 36px -18px rgba(15, 25, 51, 0.30);
     opacity: 0;
     transform: translateY(20px);
     animation: rise 1s var(--ease) forwards;
-    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .hero-card:nth-of-type(1) { animation-delay: 0.60s; }
   .hero-card:nth-of-type(2) { animation-delay: 0.75s; }
@@ -296,39 +296,40 @@
   .hero-card:hover {
     transform: translateY(-3px);
     box-shadow:
-      0 1px 2px rgba(15, 25, 51, 0.05),
-      0 22px 40px -16px rgba(15, 25, 51, 0.16);
-    border-color: rgba(160, 37, 56, 0.20);
+      0 1px 2px rgba(0, 0, 0, 0.20),
+      0 28px 50px -18px rgba(15, 25, 51, 0.45);
   }
   .hero-card-icon {
-    width: 40px;
-    height: 40px;
+    width: 72px;
+    height: 72px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 18px;
-    color: var(--accent);
-    transition: transform 0.35s var(--ease);
+    margin-bottom: 22px;
+    color: var(--accent-soft);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    transition: background 0.2s ease;
   }
   .hero-card-icon svg {
-    width: 30px;
-    height: 30px;
-    stroke-width: 1.6;
+    width: 42px;
+    height: 42px;
+    stroke-width: 1.4;
   }
-  .hero-card:hover .hero-card-icon { transform: translateY(-2px); }
+  .hero-card:hover .hero-card-icon { background: rgba(255, 255, 255, 0.12); }
   .hero-card-title {
     font-family: 'Fraunces', serif;
-    font-size: 23px;
-    font-weight: 500;
-    color: var(--ink);
+    font-size: 25px;
+    font-weight: 600;
+    color: #ffffff;
     letter-spacing: -0.015em;
     line-height: 1.2;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .hero-card-text {
     font-size: 15.5px;
-    color: var(--ink-soft);
-    line-height: 1.6;
+    color: #D7DCE6;
+    line-height: 1.65;
   }
 
   @media (max-width: 960px) {
@@ -449,7 +450,17 @@
     color: var(--ink);
     margin: 18px 0 18px;
   }
-  .studio-content p { color: var(--ink-soft); font-size: 17px; line-height: 1.65; max-width: 580px; margin: 0 auto; }
+  .studio-content p { color: var(--ink-soft); font-size: 17px; line-height: 1.7; max-width: 580px; margin: 0 auto 18px; }
+  .studio-content p:last-of-type { margin-bottom: 0; }
+  .studio-closing {
+    margin-top: 28px !important;
+    font-family: 'Fraunces', serif !important;
+    font-style: italic;
+    font-size: 17px !important;
+    color: var(--accent) !important;
+    line-height: 1.55 !important;
+    max-width: 540px !important;
+  }
 
   /* ---------- PREVIEW (dark navy) ---------- */
   .preview {
@@ -833,8 +844,12 @@
   <div class="wrap">
     <div class="studio-content reveal">
       <span class="studio-eyebrow">The Studio</span>
-      <h2>Built in Philadelphia. Focused on small business.</h2>
-      <p>Penn Square Digital is a small, independent studio with deep roots in web performance, automation, and lead generation for local service businesses. Small enough to know every client's name. Technical enough to ship the systems agencies usually charge five figures for.</p>
+      <h2>Built on Philadelphia's Tradition of Connection</h2>
+      <p>For generations, Penn Square has been one of Philadelphia's historic gathering places — a crossroads where people came together to exchange ideas, build relationships, and grow businesses.</p>
+      <p>Today, every successful business needs a modern gathering place of its own.</p>
+      <p>Your website should do more than exist online. It should welcome visitors, build trust, answer questions, generate leads, and create lasting customer relationships.</p>
+      <p>Penn Square Digital was built around that idea: creating websites that become the modern front door for local businesses.</p>
+      <p class="studio-closing">Helping Philadelphia businesses grow through connection, trust, and modern digital systems.</p>
     </div>
   </div>
 </section>
